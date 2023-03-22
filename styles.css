@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto+Mono:wght@200&display=swap');
+
+* {
+    font-family: 'Climate Crisis', cursive;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    background: linear-gradient(rgb(48, 48, 48), rgb(175, 174, 174));
+}
+
+.cont{
+    padding: 25px 45px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    border: 0.2px solid rgb(88, 88, 88);
+    flex-basis: 400px;
+    height: 500px;
+}
+

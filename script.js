@@ -1,3 +1,8 @@
+const operatorButton= document.querySelector('.operator-button');
+const numberButton= document.querySelector('.number-button');
+const deleteButton= document.querySelector('.delete-button');
+const deleteAllButton= document.querySelector('.delete-all');
+
 let firstNumber = '';
 let secondNumber = '';
 let operator;
