@@ -10,22 +10,63 @@
 html {
     height: 100%;
     box-sizing: border-box;
-}
-
-body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    background: linear-gradient(rgb(48, 48, 48), rgb(175, 174, 174));
+    flex-direction: column;
 }
 
-.cont{
-    padding: 25px 45px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    border: 0.2px solid rgb(88, 88, 88);
-    flex-basis: 400px;
-    height: 500px;
+.calculator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    height: 600px;
+    margin-top: 50px;
+}
+
+.footer{
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: rgb(27, 37, 37);
+    font-weight: 900;
+}
+
+.cont {
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(120, 122, 122);
+}
+
+.display{
+    text-align: right;
+    background: linear-gradient(rgb(173, 177, 150), rgb(213, 218, 185)); 
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.separate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 5px;
+}
+
+button{
+    padding: 20px;
+    flex-basis: 95px;
+    font-size: 20px;
+}
+
+#bigger, .delete-button{
+    flex-basis: 48%;
+}
+
+.last-digits{
+    font-size: 15px;
+    min-height: 20px;
 }
 

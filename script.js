@@ -2,6 +2,10 @@ const operatorButton= document.querySelector('.operator-button');
 const numberButton= document.querySelector('.number-button');
 const deleteButton= document.querySelector('.delete-button');
 const deleteAllButton= document.querySelector('.delete-all');
+const equalsButton= document.querySelector('.equals');
+const display=document.querySelector('.result');
+const lastNumbers=document.querySelector('.last-digits')
+
 
 let firstNumber = '';
 let secondNumber = '';
