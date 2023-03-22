@@ -35,7 +35,8 @@ html {
     width: 400px;
     border-radius: 10px;
     padding: 20px;
-    background-color: rgb(120, 122, 122);
+    background-color: rgb(163, 163, 163);
+    border: 2px solid black;
 }
 
 .display{
@@ -45,24 +46,36 @@ html {
     padding: 15px 20px;
     font-size: 26px;
     margin-bottom: 5px;
+    border: 2px solid black;
 }
 
 .separate{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2px;
-    margin-bottom: 5px;
+    gap: 5px;
+    margin-bottom: 2px;
 }
 
 button{
+    font-weight: 500;
+    background-color: rgb(230, 230, 230);
     padding: 20px;
-    flex-basis: 95px;
+    flex-basis: 98px;
     font-size: 20px;
+    border: 2px solid black;
+}
+
+button:hover{
+    background-color: rgb(168, 160, 168);
+}
+
+button:active{
+    background-color: rgb(117, 103, 117);
 }
 
 #bigger, .delete-button{
-    flex-basis: 48%;
+    flex-basis: 51%;
 }
 
 .last-digits{
