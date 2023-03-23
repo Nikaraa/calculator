@@ -52,7 +52,7 @@ function pressOperator(string) {
     resetScreen = true
     firstNumber = displayDiv.textContent
     operator = string
-    lastNumbers.textContent = `${firstNumber}${operator}`
+    lastNumbers.textContent = `${firstNumber} ${operator}`
 }
 
 function deleteLast() {
@@ -70,7 +70,7 @@ function doOperation() {
     if (resetScreen || operator === null) return
     secondNumber = displayDiv.textContent
     displayDiv.textContent = Math.round(operate(operator, firstNumber, secondNumber) * 1000) / 1000
-    lastNumbers.textContent = `${firstNumber}${operator}${secondNumber}`
+    lastNumbers.textContent = `${firstNumber} ${operator} ${secondNumber}`
     operator = null
 }
 
@@ -82,7 +82,7 @@ function pressKey(e){
     if(e.key=='+') pressOperator('+')
     if(e.key=='-') pressOperator('–')
     if(e.key=='backspace') deleteLast()
-    if(e.key=='escape') deleteAllButton()
+    if(e.keyCode == 46) clearAll()
     if(e.key=='='||e.key=='Enter') doOperation()
 }
 
