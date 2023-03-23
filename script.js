@@ -5,6 +5,7 @@ const deleteAllButton = document.querySelector('.delete-all')
 const equalsButton = document.querySelector('.equals')
 const displayDiv = document.querySelector('.result')
 const lastNumbers = document.querySelector('.last-digits')
+const pointButton = document.querySelector('.point-button')
 
 let firstNumber = ''
 let secondNumber = ''
@@ -22,6 +23,7 @@ operatorButton.forEach((button) => {
 equalsButton.addEventListener('click', doOperation)
 deleteAllButton.addEventListener('click', clearAll)
 deleteButton.addEventListener('click', deleteLast)
+pointButton.addEventListener('click', useComma)
 
 function reset() {
     displayDiv.textContent = ''
@@ -30,7 +32,7 @@ function reset() {
 
 function clearAll() {
     displayDiv.textContent = '0'
-    lastNumbers = '0'
+    lastNumbers.textContent = ''
     firstNumber = ''
     secondNumber = ''
     operator = null
@@ -48,17 +50,24 @@ function pressOperator(string) {
     resetScreen = true
     firstNumber = displayDiv.textContent
     operator = string
-    lastNumbers.textContent = `${firstNumber} ${operator}`
+    lastNumbers.textContent = `${firstNumber}${operator}`
 }
 
 function deleteLast() {
     displayDiv.textContent = displayDiv.textContent.toString().slice(0, -1)
 }
 
+function useComma() {
+    if (resetScreen) reset()
+    if (displayDiv.textContent === '') displayDiv.textContent = '0'
+    if (displayDiv.textContent.includes('.')) return
+    displayDiv.textContent += '.'
+}
+
 function doOperation() {
     if (resetScreen || operator === null) return
     secondNumber = displayDiv.textContent
-    displayDiv.textContent = Math.floor() operate(operator, firstNumber, secondNumber)
+    displayDiv.textContent = Math.round(operate(operator, firstNumber, secondNumber) * 1000) / 1000
     lastNumbers.textContent = `${firstNumber}${operator}${secondNumber}`
     operator = null
 }
@@ -82,7 +91,7 @@ function divide(a, b) {
 function operate(operator, a, b) {
     switch (operator) {
         case '+': return add(a, b)
-        case '-': return subtract(a, b)
+        case '–': return subtract(a, b)
         case '×': return multiply(a, b)
         case '÷': {
             if (b === 0) {
