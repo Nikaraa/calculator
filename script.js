@@ -9,61 +9,58 @@ const lastNumbers = document.querySelector('.last-digits')
 let firstNumber = ''
 let secondNumber = ''
 let operator = null
+let resetScreen = false
 
-deleteAllButton.addEventListener('click', resetAll())
+numberButton.forEach((button) => {
+    button.addEventListener('click', () => pressNum(button.textContent))
+})
 
-numberButton.forEach((button) =>
-    button.addEventListener('click', () => pressNumber(button.textContent))
-)
+operatorButton.forEach((button) => {
+    button.addEventListener('click', () => pressOperator(button.textContent))
+})
 
-operatorButton.forEach((button) =>
-    button.addEventListener('click', () => pressOperation(button.textContent))
-)
+equalsButton.addEventListener('click', doOperation)
+deleteAllButton.addEventListener('click', clearAll)
+deleteButton.addEventListener('click', deleteLast)
 
-equalsButton.addEventListener('click', doOperation())
-deleteButton.addEventListener('click', deleteButtonFunction())
-
-function deleteButtonFunction(string){
-    string.slice(string.length-1);
+function reset() {
+    displayDiv.textContent = ''
+    resetScreen = false
 }
-function resetAll() {
+
+function clearAll() {
     displayDiv.textContent = '0'
-    lastNumbers.textContent = ''
+    lastNumbers = '0'
     firstNumber = ''
     secondNumber = ''
     operator = null
 }
 
-function resetScreen() {
-    displayDiv.innerHTML = ''
+function pressNum(string) {
+    if (displayDiv.textContent === '0' || resetScreen) {
+        reset()
+    }
+    displayDiv.textContent += string
 }
 
-function pressNumber(number) {
-    if (displayDiv.textContent === '0') {
-        resetScreen()
-    }
-    display = number;
-    displayDiv.textContent += display
+function pressOperator(string) {
+    if (operator !== null) doOperation()
+    resetScreen = true
+    firstNumber = displayDiv.textContent
+    operator = string
+    lastNumbers.textContent = `${firstNumber} ${operator}`
 }
 
-function pressOperation(operation) {
-    if (operator === null) {
-        firstNumber = displayDiv.textContent
-        operator = operation
-        lastNumbers.textContent = firstNumber+"" + operator
-        resetScreen()
-    }
-    else if (operator != null) {
-        doOperation()
-    }
+function deleteLast() {
+    displayDiv.textContent = displayDiv.textContent.toString().slice(0, -1)
 }
 
 function doOperation() {
-    if(operation===null){
-        return;
-    }
+    if (resetScreen || operator === null) return
     secondNumber = displayDiv.textContent
-    displayDiv.textContent= operate(operation, firstNumber, secondNumber)
+    displayDiv.textContent = Math.floor() operate(operator, firstNumber, secondNumber)
+    lastNumbers.textContent = `${firstNumber}${operator}${secondNumber}`
+    operator = null
 }
 
 function add(a, b) {
@@ -86,10 +83,10 @@ function operate(operator, a, b) {
     switch (operator) {
         case '+': return add(a, b)
         case '-': return subtract(a, b)
-        case '*': return multiply(a, b)
-        case '/': {
+        case '×': return multiply(a, b)
+        case '÷': {
             if (b === 0) {
-                return;
+                return alert("Diving by 0!");
             }
             else {
                 return divide(a, b)
