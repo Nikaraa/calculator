@@ -85,3 +85,11 @@ button:active {
     font-size: 15px;
     min-height: 20px;
 }
+
+.operator-button{
+    background-color: rgb(250, 205, 205);
+}
+
+.equals{
+    background-color: rgb(228, 142, 142);
+}

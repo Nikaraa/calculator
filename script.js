@@ -81,7 +81,7 @@ function pressKey(e){
     if(e.key=='*') pressOperator('×')
     if(e.key=='+') pressOperator('+')
     if(e.key=='-') pressOperator('–')
-    if(e.key=='backspace') deleteLast()
+    if(e.key=='Backspace') deleteLast()
     if(e.keyCode == 46) clearAll()
     if(e.key=='='||e.key=='Enter') doOperation()
 }
