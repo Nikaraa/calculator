@@ -7,6 +7,7 @@ const displayDiv = document.querySelector('.result')
 const lastNumbers = document.querySelector('.last-digits')
 const pointButton = document.querySelector('.point-button')
 
+
 let firstNumber = ''
 let secondNumber = ''
 let operator = null
@@ -20,6 +21,7 @@ operatorButton.forEach((button) => {
     button.addEventListener('click', () => pressOperator(button.textContent))
 })
 
+window.addEventListener('keydown', pressKey)
 equalsButton.addEventListener('click', doOperation)
 deleteAllButton.addEventListener('click', clearAll)
 deleteButton.addEventListener('click', deleteLast)
@@ -70,6 +72,18 @@ function doOperation() {
     displayDiv.textContent = Math.round(operate(operator, firstNumber, secondNumber) * 1000) / 1000
     lastNumbers.textContent = `${firstNumber}${operator}${secondNumber}`
     operator = null
+}
+
+function pressKey(e){
+    if(e.key>=0&&e.key<=9) pressNum(e.key)
+    if(e.key=='.') useComma()
+    if(e.key=='/') pressOperator('÷')
+    if(e.key=='*') pressOperator('×')
+    if(e.key=='+') pressOperator('+')
+    if(e.key=='-') pressOperator('–')
+    if(e.key=='backspace') deleteLast()
+    if(e.key=='escape') deleteAllButton()
+    if(e.key=='='||e.key=='Enter') doOperation()
 }
 
 function add(a, b) {
